@@ -30,14 +30,18 @@
           </div>
           <div class="row">
             <div class="col-6">
-                <img src="https://ssl.gstatic.com/onebox/weather/64/cloudy.png" alt="Clear"/>
-                  19C | F
-                </div>
-            
+               <div class="d-flex weather-temperature">
+  <img src="https://ssl.gstatic.com/onebox/weather/64/cloudy.png" alt="Clear" id="icon" />
+  <div>
+    <strong id="temperature">19</strong
+    ><span class="celsius"> °C | </span> <span class="fahrenheit"> <a href="#"> °F</a></span>
+  </div>
+</div>
+          </div>  
             <div class="col-6">
               <ul>
-                <li>Humidity: 30 <span id="humidity"></span>%</li>
-                <li>Wind: 40km/h</li>
+                <li id="humidity">Humidity: 30%</li>
+                <li id="wind">Wind: 40km/h</li>
               </ul>
             </div>
           </div>
