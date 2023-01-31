@@ -44,11 +44,16 @@ function displayTemperature(response) {
   wind.innerHTML = Math.round(response.data.wind.speed);
   let date = document.querySelector("#date");
   date.innerHTML = formatDate(response.data.time * 1000);
+  let icon = document.querySelector("#icon");
+  icon.setAttribute(
+    "src",
+    `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.condition.icon}.png`
+  );
+  icon.setAttribute("alt", response.data.condition.description);
 }
 
 let apiKey = "508d54a034ao7702ct57a2eb3f9ba0acb";
-let apiUrl =
-  "https://api.shecodes.io/weather/v1/current?query=Sydney&key=08d54a034ao7702ct57a2eb3f9ba0acb&units=metric";
-console.log(apiUrl);
+let cityInput = "Berlin";
+let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${cityInput}&key=08d54a034ao7702ct57a2eb3f9ba0acb&units=metric`;
 
 axios.get(apiUrl).then(displayTemperature);
