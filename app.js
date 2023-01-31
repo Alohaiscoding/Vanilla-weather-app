@@ -45,6 +45,9 @@ function displayTemperature(response) {
   let date = document.querySelector("#date");
   date.innerHTML = formatDate(response.data.time * 1000);
   let icon = document.querySelector("#icon");
+
+  celsiusTemperature = response.data.temperature.current;
+
   icon.setAttribute(
     "src",
     `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.condition.icon}.png`
@@ -64,8 +67,31 @@ function handleSubmit(event) {
   search(cityInputElement.value);
   console.log(cityInputElement.value);
 }
+function displayFahrenheintTemperature(event) {
+  event.preventDefault();
+  let temperature = document.querySelector("#temperature");
+  celsiuslink.classList.remove("active");
+  Fahrenheintlink.classList.add("active");
+  let fahrenheintTemperature = (celsiusTemperature * 9) / 5 + 32;
+  temperature.innerHTML = Math.round(fahrenheintTemperature);
+}
 
-search("Sydney");
+function displaycelsiusTemperature(event) {
+  event.preventDefault();
+  celsiuslink.classList.add("active");
+  Fahrenheintlink.classList.remove("active");
+  let temperature = document.querySelector("#temperature");
+  temperature.innerHTML = Math.round(celsiusTemperature);
+}
+let celsiusTemperature = null;
 
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", handleSubmit);
+
+let Fahrenheintlink = document.querySelector("#fahnrenheit-link");
+Fahrenheintlink.addEventListener("click", displayFahrenheintTemperature);
+
+let celsiuslink = document.querySelector("#celsius-link");
+celsiuslink.addEventListener("click", displaycelsiusTemperature);
+
+search("Sydney");
