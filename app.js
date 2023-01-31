@@ -34,6 +34,8 @@ function displayTemperature(response) {
   console.log(response.data);
   let temperature = document.querySelector("#temperature");
   temperature.innerHTML = Math.round(response.data.temperature.current);
+  let temperatureFeel = document.querySelector("#feels");
+  temperatureFeel.innerHTML = Math.round(response.data.temperature.feels_like);
   let city = document.querySelector("#city");
   city.innerHTML = response.data.city;
   let description = document.querySelector("#description");
@@ -83,6 +85,7 @@ function displaycelsiusTemperature(event) {
   let temperature = document.querySelector("#temperature");
   temperature.innerHTML = Math.round(celsiusTemperature);
 }
+
 let celsiusTemperature = null;
 
 let form = document.querySelector("#search-form");
