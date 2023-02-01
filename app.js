@@ -97,4 +97,8 @@ Fahrenheintlink.addEventListener("click", displayFahrenheintTemperature);
 let celsiuslink = document.querySelector("#celsius-link");
 celsiuslink.addEventListener("click", displaycelsiusTemperature);
 
+function currentCity(response) {
+  let city = document.querySelector(".city");
+  city.innerHTML = `${response.data.city}`;
+}
 search("Sydney");
