@@ -30,6 +30,33 @@ function formatDay(timestamp) {
   return days[day];
 }
 
+function displayForecast() {
+  let forecastElement = document.querySelector("#forecast");
+
+  let forecastHTML = `<div class="row">`;
+  let days = ["Thu", "Fri", "Sat", "Sun"];
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      ` 
+    <div class="col-2">
+  <div class="weather-forecast-date">
+    ${day}
+    </div>
+    <img src="https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png" alt=""/>
+    <di class="weather-forecast-temperatures">
+    <span class="weather-forecast-temperature-max">22° 
+      /<span class="weather-forecast-temperature-min"> 20°</span>
+    </div>
+     
+    
+    `;
+  });
+
+  forecast.innerHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+}
+
 function displayTemperature(response) {
   console.log(response.data);
   let temperature = document.querySelector("#temperature");
@@ -102,3 +129,4 @@ function currentCity(response) {
   city.innerHTML = `${response.data.city}`;
 }
 search("Sydney");
+displayForecast();
